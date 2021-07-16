@@ -1,0 +1,38 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: cloudside-k8
+  name: cloudside-k8
+spec: 
+  replicas: 2
+  selector: 
+    matchLabels: 
+      app: cloudside-k8
+  template: 
+    metadata: 
+      labels: 
+        app: cloudside-k8
+    spec: 
+      containers: 
+        - 
+          image: gcr.io/cedar-oath-316105/cloudside-app
+          name: cloudside-app
+          ports: 
+            - 
+              containerPort: 80
+--- 
+apiVersion: v1
+kind: Service
+metadata: 
+  name: cloudside-k8
+spec: 
+  ports: 
+    - 
+      nodePort: 32750
+      port: 20021
+      targetPort: 80
+  selector: 
+    app: cloudside-k8
+  type: NodePort
