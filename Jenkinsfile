@@ -20,7 +20,7 @@ pipeline {
                    * First, the incremental build number from Jenkins
                    * Second, the 'latest' tag.
                    * Pushing multiple tags is cheap, as all the layers are reused. */
-          docker.withRegistry('https://us.gcr.io','gcr:cedar-oath-316105') {
+          docker.withRegistry('https://gcr.io','gcr:cedar-oath-316105') {
               dockerImage.push("${env.BUILD_NUMBER}")
               dockerImage.push("latest")
           }
