@@ -14,4 +14,4 @@ COPY --from=build /app/dist/ /usr/share/nginx/html
 
 EXPOSE "80"
 
-RUN echo "jenkins ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+
