@@ -16,10 +16,6 @@ pipeline {
     stage('Push Image To GCR') {
       steps{
         script {
-          /* Finally, we'll push the image with two tags:
-                   * First, the incremental build number from Jenkins
-                   * Second, the 'latest' tag.
-                   * Pushing multiple tags is cheap, as all the layers are reused. */
           docker.withRegistry('https://gcr.io','gcr:cedar-oath-316105') {
               dockerImage.push("${env.BUILD_NUMBER}")
               dockerImage.push("latest")
