@@ -13,7 +13,7 @@ pipeline {
         }
       }
     }
-    stage('Push Images To GCR') {
+    stage('Push Image To GCR') {
       steps{
         script {
           docker.withRegistry('https://gcr.io','gcr:cedar-oath-316105') {
